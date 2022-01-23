@@ -1,0 +1,26 @@
+void GetStack(stack<int> &s,int to)
+{
+    if(s.empty()||to>=s.top())
+    {
+        s.push(to);
+        return;
+    }
+    
+    int t=s.top();
+    s.pop();
+    GetStack(s,to);
+    s.push(t);
+    return;
+}
+void SortedStack :: sort()
+{
+   //Your code here
+   if(s.empty())
+   return;
+   
+   int to=s.top();
+   s.pop();
+   sort();
+   GetStack(s,to);
+   return;
+}
