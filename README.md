@@ -1,2 +1,2 @@
 # Aditya-Verma-Recurson!
-This project will basically contain Recursion questions covered in Aditya Verma'list!
+This project will basically contain Recursion questions covered in Aditya Verma's list!
