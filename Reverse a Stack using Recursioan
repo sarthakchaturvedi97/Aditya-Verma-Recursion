@@ -1,0 +1,45 @@
+#include<bits/stdc++.h>
+using namespace std;
+void getSolve(stack<int> &st,int t)
+{
+    if(st.size()==0)
+    {
+        st.push(t);
+        return;
+    }
+    
+    int to=st.top();
+    st.pop();
+    getSolve(st,t);
+    st.push(to);
+    return;
+}
+void solve(stack<int> &st)
+{
+    if(st.size()==0)
+    return;
+    
+    int t=st.top();
+    st.pop();
+    solve(st);
+    getSolve(st,t);
+  return;
+}
+int main() {
+    int n;
+    cin>>n;
+    stack<int> st;
+    int a;
+    for(int i=0;i<n;i++)
+    {
+        cin>>a;
+        st.push(a);
+    }
+    solve(st);
+    while(!st.empty())
+    {
+        cout<<st.top()<<" ";
+        st.pop();
+    }
+	return 0;
+}
