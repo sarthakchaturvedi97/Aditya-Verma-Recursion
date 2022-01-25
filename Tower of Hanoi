@@ -1,0 +1,23 @@
+class Solution
+{
+public:
+long long getSolved(int N,int from,int to,int aux,long long &count)
+    {
+        if(N==0)
+        {
+            return 0;
+        }
+        ++count;
+        getSolved(N-1,from,aux,to,count);
+        cout<<"move disk "<<N<<" from rod "<<from<<" to rod "<<to<<endl;
+        getSolved(N-1,aux,to,from,count);
+        return count;
+    }
+    long long toh(int N, int from, int to, int aux) {
+        // Your code here
+        long long count=0;
+        getSolved(N,from,to,aux,count);
+        return count;
+    }
+   }; 
+    
