@@ -1,0 +1,33 @@
+class Solution {
+public:
+    void getSolved(string opt,int op,int cl,vector<string> &result)
+    {
+        if(op==0&&cl==0)
+        {
+            result.push_back(opt);
+            return;
+        }
+        
+        if(op!=0)
+        {
+            string op1=opt;
+            op1.push_back('(');
+            getSolved(op1,op-1,cl,result);
+        }
+        
+        if(cl>op)
+        {
+            string op1=opt;
+            op1.push_back(')');
+            getSolved(op1,op,cl-1,result);
+        }
+        return;
+    }
+    vector<string> generateParenthesis(int n) {
+        int op=n,cl=n;
+        vector<string> result;
+        string opt;
+        getSolved(opt,op,cl,result);
+        return result;
+    }
+};
