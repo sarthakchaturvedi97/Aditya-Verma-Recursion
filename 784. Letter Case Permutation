@@ -1,0 +1,37 @@
+class Solution {
+public:
+    void getSolved(string s,string op,vector<string> &result)
+    {
+        if(s.length()==0)
+        {
+            result.push_back(op);
+            return;
+        }
+        
+        if(isdigit(s[0]))
+        {
+            string op1=op;
+            op1.push_back(s[0]);
+            s.erase(s.begin());
+            getSolved(s,op1,result);
+        }
+        else
+        {
+            string op1=op;
+            string op2=op;
+            op1.push_back(tolower(s[0]));
+            op2.push_back(toupper(s[0]));
+            s.erase(s.begin());
+            getSolved(s,op1,result);
+            getSolved(s,op2,result);
+        }
+        
+        return;
+    }
+    vector<string> letterCasePermutation(string s) {
+        vector<string> result;
+        string op;
+        getSolved(s,op,result);
+        return result;
+    }
+};
