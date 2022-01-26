@@ -1,0 +1,25 @@
+class Solution {
+public:
+    void getSorted(vector<int> op,vector<int> nums,vector<vector<int>> &result)
+    {
+        if(nums.size()==0)
+        {
+            result.push_back(op);
+            return;
+        }
+        
+        vector<int> op1=op;
+        vector<int> op2=op;
+        op1.push_back(nums[0]);
+        nums.erase(nums.begin());
+        getSorted(op1,nums,result);
+        getSorted(op2,nums,result);
+        return;
+    }
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<int> op;
+        vector<vector<int>> result;
+        getSorted(op,nums,result);
+        return result;
+    }
+};
