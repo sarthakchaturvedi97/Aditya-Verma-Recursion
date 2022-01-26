@@ -1,0 +1,35 @@
+class Solution{
+public:	
+    void getSorted(string op,int one,int zero,int N,vector<string> &result)
+    {
+        if(N==0)
+        {
+            result.push_back(op);
+            return;
+        }
+        
+        string op1=op;
+        op1.push_back('1');
+        getSorted(op1,one+1,zero,N-1,result);
+        
+        if(one>zero)
+        {
+            string op1=op;
+            op1.push_back('0');
+            getSorted(op1,one,zero+1,N-1,result);
+        }
+        
+        return;
+    }
+	vector<string> NBitBinary(int N)
+	{
+	    // Your code goes 
+	    string op;
+	    op.push_back('1');
+	    N-=1;
+	    vector<string> result;
+	    int one=1,zero=0;
+	    getSorted(op,one,zero,N,result);
+	    return result;
+	}
+};
